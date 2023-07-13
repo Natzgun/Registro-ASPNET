@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="886003da-8cd0-406d-9815-a1bfaa7087a6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:64920/ServiceSave.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServiceSave.wsdl" MetadataType="Wsdl" ID="c402ba36-f520-4bd9-9986-1964a7b78ef8" SourceId="1" SourceUrl="http://localhost:64920/ServiceSave.svc?wsdl" />
+    <MetadataFile FileName="ServiceSave.xsd" MetadataType="Schema" ID="ca3247e6-f656-4a1f-901c-e3531a762d67" SourceId="1" SourceUrl="http://localhost:64920/ServiceSave.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceSave1.xsd" MetadataType="Schema" ID="09629613-317a-4ac8-9cf7-21eb316d4342" SourceId="1" SourceUrl="http://localhost:64920/ServiceSave.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceSave.disco" MetadataType="Disco" ID="1b8b59e6-0def-4d60-960c-1f69794d1760" SourceId="1" SourceUrl="http://localhost:64920/ServiceSave.svc?disco" />
+    <MetadataFile FileName="ServiceSave2.xsd" MetadataType="Schema" ID="1d403cc3-d4ea-4af8-9fe1-f626799a8a79" SourceId="1" SourceUrl="http://localhost:64920/ServiceSave.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
