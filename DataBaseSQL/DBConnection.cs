@@ -34,7 +34,7 @@ namespace DataBaseSQL
         private void querySave()
         {
             SaveStudents ss = new SaveStudents();
-            ss.SaveData("Erick", "Malcoaccha", "uwu@unsa.edu.pe", "Masculino", "Calle dean valdivia", "Arequipa","Aqui deberia ir algo");
+            ss.SaveData("Erick", "Malcoaccha", "owo@unsa.edu.pe", "Masculino", "Calle dean valdivia", "Arequipa","Aqui deberia ir algo");
         }
     }
 }

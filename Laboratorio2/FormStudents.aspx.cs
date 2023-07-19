@@ -57,7 +57,7 @@ namespace Laboratorio2
 
             // En esta parte llamaraemos al servicio para almacenar los datos
             sendData(name, lastName, email, radioInpt, address, city, reqArea );
-
+            
             for (int i = 0; i < info.Length; i++)
             {
                 if (info[i] == "")
@@ -80,6 +80,21 @@ namespace Laboratorio2
                 datosDiv.Controls.Add(literal);
             }
 
+            // Aqui vamos a hacer todo lo relacionado con Cookies
+            HttpCookie cookie = new HttpCookie("UserInfo");
+            cookie.Values["Sexo"] = radioInpt;
+            cookie.Values["Ciudad"] = city;
+            cookie.HttpOnly = true;
+            Response.Cookies.Add(cookie);
+            createSession(name, lastName);
+            Response.Redirect("Auxiliar");
+
+        }
+
+        private void createSession(String nombre, String apellido)
+        {
+            Session["Nombre"] = nombre;
+            Session["Apellido"] = apellido;
         }
 
         //public void cargar_ciudades()
