@@ -12,6 +12,7 @@ namespace Laboratorio2
         protected void Page_Load(object sender, EventArgs e)
         {
             loadSession();
+            //deleteSessions();
         }
         private void loadSession()
         {
