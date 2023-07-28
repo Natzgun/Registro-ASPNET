@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -41,6 +42,12 @@ namespace Laboratorio2
                 string informacion = $"Sexo: {sexo}, Ciudad: {ciudad}";
                 areaCookie.Text = informacion;
             }
+        }
+
+        [WebMethod]
+        public static String getInformacion(String valor)
+        {
+            return "Desde el servidor se recibio :" + valor;
         }
     }
 }

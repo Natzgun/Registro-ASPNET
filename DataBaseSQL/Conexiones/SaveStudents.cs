@@ -53,7 +53,7 @@ namespace DataBaseSQL.Conexiones
         }
         public static int? ObtenerIdCiudad(string ciudadElegida, string conexion)
         {
-            int idCiudad = -1; // Valor predeterminado en caso de no encontrar la ciudad
+            int idCiudad = -1;
             string consulta = "SELECT Id FROM [dbo].[DataCiudad] WHERE Ciudad = @Ciudad";
             using (SqlConnection connection = new SqlConnection(conexion))
             {

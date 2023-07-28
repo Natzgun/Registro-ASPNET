@@ -12,6 +12,8 @@ using Laboratorio2.ServiceReference1;
 using Laboratorio2.ServiceReference2;
 using System.ServiceModel;
 using Laboratorio2.ServiceReference3;
+using System.Web.Services;
+using System.Data.SqlClient;
 
 namespace Laboratorio2
 {
@@ -97,17 +99,35 @@ namespace Laboratorio2
             Session["Apellido"] = apellido;
         }
 
-        //public void cargar_ciudades()
-        //{
-        //    string ruta_ciudades = Server.MapPath("./App_Data/CiudadesPeru.txt");
-        //    string[] ciudad = File.ReadAllLines(ruta_ciudades);
-        //    Array.Sort(ciudad);
+        [WebMethod]
+        public static String getInfo(String name, String lastname)
+        {
+            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=FormStundents;Integrated Security=True";
 
-        //    for (int i = 0; i < ciudad.Length; i++)
-        //    {
-        //        ListItem item = new ListItem(ciudad[i], ciudad[i]);
-        //        DropDownList1.Items.Add(item);
-        //    }
-        //}
+            string query = "SELECT COUNT(*) FROM DataAlumnos WHERE Nombre = @name AND Apellidos = @lastname";
+
+            int count = 0;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@name", name);
+                    command.Parameters.AddWithValue("@lastname", lastname);
+                    connection.Open();
+                    count = (int)command.ExecuteScalar();
+                }
+            }
+
+            if (count > 0)
+            {
+                return "El usuario " + name + " " + lastname + " ya está registrado.";
+            }
+            else
+            {
+                return "El usuario " + name + " " + lastname + " no está registrado.";
+            }
+
+        }
     }
 }

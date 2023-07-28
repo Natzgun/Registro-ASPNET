@@ -10,6 +10,7 @@
     <title>Formulario estudiante</title>
     <script defer type="text/javascript" src="/Scripts/Forms/formStudent.js"></script>
     <script defer src="/Scripts/bootstrap.js"></script>
+    <script src="./Scripts/jquery-3.4.1.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -23,7 +24,7 @@
                         <asp:Label ID="Label1" runat="server" Text="Nombre:"></asp:Label>
                     </div>
                     <div class="col-md-4">
-                        <asp:TextBox ID="nameInput" runat="server" type="text" class="form-control" placeholder="Nombre"></asp:TextBox>
+                        <asp:TextBox ID="nameInput" runat="server" type="text" class="form-control" placeholder="Nombre" ClientIDMode="Static"></asp:TextBox>
                     </div>
                 </div>
 
@@ -32,10 +33,16 @@
                         <asp:Label ID="Label2" runat="server" Text="Apellidos:"></asp:Label>
                     </div>
                     <div class="col-md-4">
-                        <asp:TextBox ID="apellidoInput" runat="server" class="form-control" type="text" placeholder="Apellidos"></asp:TextBox>
+                        <asp:TextBox ID="apellidoInput" runat="server" class="form-control" type="text" placeholder="Apellidos" ClientIDMode="Static"></asp:TextBox>
                     </div>
 
                 </div>
+
+                <div class="col-sm-6 text-white p-2 rounded" id="boxRegisterError" style="display: none">
+                    <div class="mb-1" id="text"></div>
+                </div>
+
+
                 <div class="mb-3 row">
                     <div class="col-md-2">
                         <asp:Label ID="Label3" runat="server" Text="Sexo:"></asp:Label>

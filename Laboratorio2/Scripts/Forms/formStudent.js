@@ -8,7 +8,10 @@ const dropDownCity = document.querySelector('#DropDownList1');
 const requiredArea = document.querySelector('#requiredArea');
 // Captura el div del modal para colorcar texto
 const errors_camp = document.querySelector('#content-modal-text');
-console.log(errors_camp);
+
+
+let nombre;
+let apellido;
 
 
 // Expresiones regulares para hacer la validacion de los inputs
@@ -71,37 +74,6 @@ function sendInformation() {
         alert(formGood);
         add_error(formGood);
         return true;
-        //// Enviar los datos al servidor usando Fetch
-        //const data = {
-        //    name: nameInp.value,
-        //    apellido: apellidoInp.value,
-        //    sexo: radioBtnM.checked ? "masculino" : "femenino",
-        //    correo: emailInp.value,
-        //    direccion: adressInp.value,
-        //    ciudad: dropDownCity.value,
-        //    requerimiento: requiredArea.value,
-        //};
-
-        //fetch('', {
-        //    method: 'POST',
-        //    headers: {
-        //        'Content-Type': 'application/json; charset=utf-8'
-        //    },
-        //    body: JSON.stringify(data),
-        //    credentials: 'same-origin'
-        //})
-
-        //    .then(response => {
-        //        if (response.ok) {
-        //            console.log('Datos enviados al servidor');
-        //        } else {
-        //            console.error('Error al enviar los datos al servidor');
-        //        }
-        //    })
-        //    .catch(error => {
-        //        console.error('Error en la solicitud Fetch:', error);
-        //    });
-        //return true;
     } else {
         return false;
     }
@@ -120,3 +92,48 @@ function Clean() {
     requiredArea.value = voidContent;
     return false;
 }
+
+function verifyAjax(nombre, apellido) {
+    var jsonData = {
+        name: nombre,
+        lastname: apellido
+    };
+    console.log(JSON.stringify(jsonData));
+    $.ajax({
+        url: 'FormStudents.aspx/getInfo',
+        type: 'POST',
+        async: true,
+        data: JSON.stringify(jsonData),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: exito,
+    });
+    return false;
+}
+
+function exito(data) {
+    let verify = data.d;
+    $('#boxRegisterError').css("display", "block");
+    $('#text').text(data.d);
+
+    var palabraBuscada = "ya";
+    var palabraEncontrada = verify.includes(palabraBuscada);
+    $('#boxRegisterError').removeClass('bg-danger bg-success');
+    if (palabraEncontrada) {
+        $('#boxRegisterError').addClass('bg-danger');
+    } else {
+        $('#boxRegisterError').addClass('bg-success');
+    }
+
+    return false;
+}
+
+function onInputFinish() {
+    nombre = document.getElementById('nameInput').value;
+    apellido = document.getElementById('apellidoInput').value;
+
+    verifyAjax(nombre, apellido);
+    console.log("Nombre:", nombre);
+    console.log("Apellidos:", apellido);
+}
+document.getElementById('apellidoInput').addEventListener('input', onInputFinish);
