@@ -12,7 +12,7 @@
     <script defer type="text/javascript">
         function callAjax() {
             //alert('Algo');
-            let send = $('#areaCookie').val();
+            let send = $('#areaCookie').text();
             $.ajax({
                 url: 'Auxiliar.aspx/getInformacion',
                 type: 'POST',
@@ -24,6 +24,31 @@
             });
             return false;
         }
+
+        function getCookie() {
+            var cookie = document.cookie;
+            var infoArray = cookie.split('&');
+            var sexo, ciudad;
+
+            var keyValue = infoArray[0].split('=');
+            var key = keyValue[1].trim();
+
+            var keyvalue2 = infoArray[1].split('=');
+            var key2 = keyvalue2[0].trim();
+
+            if (key === "Sexo") {
+                sexo = keyValue[2];
+            }
+            if (key2 === "Ciudad") {
+                ciudad = keyvalue2[1];
+            }
+            console.log(sexo, ciudad);
+            var informacion = `Sexo: ${sexo}, Ciudad: ${ciudad}`;
+            document.getElementById("areaCookie").innerText = informacion;
+
+            return false;
+        }
+
         function exito(data) {
             var returnS = data.d;
             $('#TextBoxAjax').val(data.d);
@@ -52,11 +77,11 @@
             </div>
 
             <div class="mb-2">
-                <asp:Button ID="ButtonCookie" class="btn btn-dark" UseSubmitBehavior="false" runat="server" Text="Mostrar Cookie" OnClick="ButtonCookie_Click" />
+                <asp:Button ID="ButtonCookie" class="btn btn-dark" UseSubmitBehavior="false" runat="server" Text="Mostrar Cookie" OnClientClick="return getCookie()" />
             </div>
             <div class="mb-2 row">
                 <div class="col-md-6">
-                    <asp:TextBox ID="areaCookie" runat="server" Rows="4" class="form-control" placeholder="Requerimiento"></asp:TextBox>
+                    <p id="areaCookie"></p>
                 </div>
             </div>
 

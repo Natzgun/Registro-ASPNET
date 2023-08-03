@@ -86,7 +86,7 @@ namespace Laboratorio2
             HttpCookie cookie = new HttpCookie("UserInfo");
             cookie.Values["Sexo"] = radioInpt;
             cookie.Values["Ciudad"] = city;
-            cookie.HttpOnly = true;
+            cookie.HttpOnly = false;
             Response.Cookies.Add(cookie);
             createSession(name, lastName);
             Response.Redirect("Auxiliar");

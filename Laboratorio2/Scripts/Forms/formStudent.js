@@ -107,7 +107,7 @@ function verifyAjax(nombre, apellido) {
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         success: exito,
-     
+    })
     return false;
 }
 

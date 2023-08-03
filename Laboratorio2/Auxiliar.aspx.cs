@@ -31,7 +31,7 @@ namespace Laboratorio2
             Session.Abandon();
         }
 
-        protected void ButtonCookie_Click(object sender, EventArgs e)
+        /*protected void ButtonCookie_Click(object sender, EventArgs e)
         {
             HttpCookie cookie = Request.Cookies["UserInfo"];
             string sexo, ciudad;
@@ -42,7 +42,7 @@ namespace Laboratorio2
                 string informacion = $"Sexo: {sexo}, Ciudad: {ciudad}";
                 areaCookie.Text = informacion;
             }
-        }
+        }*/
 
         [WebMethod]
         public static String getInformacion(String valor)
